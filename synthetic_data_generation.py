@@ -94,8 +94,18 @@ def main(paths_frac, signal_path_frac, entry_time_mean, entry_time_sigma, in_veh
     od_observed_travel_time = afc_syn['travel_time'].values
 
     afc_syn['Journety_time_interval_median'] = afc_syn.travel_time.apply(lambda x: test_count(x, intervals_discrete(od_observed_travel_time, length)))
+    od_x_series = afc_od.probability_count.value_counts(True, True, False).sort_index().index
+    od_probs = afc_od.probability_count.value_counts(True, True, False).sort_index().values
+    time_intervals = od_x_series
+                 
+    norm = []
+    for i in range(len(path_journey_time_mean_err)):
+        norm.append(gaussian(time_intervals, real_path_journey_time_mean[i], real_path_journey_time_sigma[i]))
+    
+    theta = signal_path_frac[0]*(norm[0]-norm[2])
 
-    return afc_syn
+                
+    return afc_syn, norm, theta
 
 if __name__ == '__main__':
     
