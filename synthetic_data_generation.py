@@ -102,7 +102,7 @@ def main(paths_frac, signal_path_frac, entry_time_mean, entry_time_sigma, in_veh
     for i in range(len(path_journey_time_mean_err)):
         norm.append(gaussian(time_intervals, real_path_journey_time_mean[i], real_path_journey_time_sigma[i]))
     
-    theta = signal_path_frac[0]*(norm[0]-norm[2])
+    theta = signal_path_frac[0]*(norm[0]-norm[1])
 
                 
     return afc_syn, norm, theta
