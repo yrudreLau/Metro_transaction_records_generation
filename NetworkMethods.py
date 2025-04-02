@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+
+from collections import deque
+import datetime
+import pandas as pd
+import numpy as np
+
+from NetworkMethod import Network
+
 class NetworkMethods:
     def __init__(self, afc_date='2022-06-01', data_dir='./data'):
         self.networks = Network(afc_date, data_dir)  # Network 
