@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+
+import os
+import traceback
+import pandas as pd
+import datetime
+
 class Network:
 
     def __init__(self, afc_date='2021-06-01', data_dir='./data'):
